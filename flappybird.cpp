@@ -69,20 +69,6 @@ void FlappyBird::resizeEvent(QResizeEvent *event) {
     windowTube = this->height()/5;
     tubeWidth = this->width()/13;
 
-    int changeX = event->size().width() / event->oldSize().width();
-    int changeY = event->size().height() / event->oldSize().height();
-
-//    for (TubePair* pair: tubes) {
-//        pair->getLower()->setY(pair->getLower()->y() * changeY);
-//        pair->getLower()->setX(pair->getLower()->x() * changeX);
-//        pair->getUpper()->setY(pair->getUpper()->y() * changeY);
-//        pair->getUpper()->setX(pair->getUpper()->x() * changeX);
-//
-//        pair->getLower()->setHeight(pair->getLower()->height() * changeY);
-//        pair->getLower()->setWidth(pair->getLower()->width() * changeX);
-//        pair->getUpper()->setHeight(pair->getUpper()->height() * changeY);
-//        pair->getUpper()->setWidth(pair->getUpper()->width() * changeX);
-//    }
 }
 
 FlappyBird::~FlappyBird(){
