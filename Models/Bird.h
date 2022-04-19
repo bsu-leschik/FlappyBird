@@ -1,19 +1,22 @@
 #ifndef FLAPPYBIRD_BIRD_H
 #define FLAPPYBIRD_BIRD_H
 
-#include "QPoint"
-#include "QRect"
+#include "QString"
+#include "QPixmap"
 
 class Bird {
-    QRect *bird_;
-
+    int x_;
+    int y_;
+    QPixmap* bird;
     //12*17
 public:
-    Bird(int x, int y);
+    Bird(int x, int y, const QString& pathToSprite);
 
     void moveUp(int height);
     void moveDown(int height);
-    QRect* getRect();
+
+    int getX() const;
+    int getY() const;
 
     ~Bird();
 };

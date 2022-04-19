@@ -1,25 +1,32 @@
 #include "Bird.h"
 
-Bird::Bird(int x,int y) {
-    bird_ = new QRect(x, y, 17, 12);
+Bird::Bird(int x,int y, const QString& pathToSprite) {
+    bird = new QPixmap(pathToSprite);
+    bird->scaled(17, 12);
+    x_ = x;
+    y_ = y;
 }
-
-QRect *Bird::getRect() {
-    return bird_;
-}
-
 
 void Bird::moveDown(int height) {
-    bird_->moveBottom(bird_->y() - height);
+    y_ -= height;
 }
 
 void Bird::moveUp(int height) {
-    bird_->moveTop(bird_->y() + height);
+    y_ += height;
 }
 
 Bird::~Bird() {
-    delete bird_;
+    delete bird;
 }
+
+int Bird::getX() const {
+    return x_;
+}
+
+int Bird::getY() const {
+    return y_;
+}
+
 
 
 
