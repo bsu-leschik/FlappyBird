@@ -21,3 +21,8 @@ void TubePair::moveLeft() {
     lowerRect->moveLeft(lowerRect->x() - 1);
     upperRect->moveLeft(upperRect->x() - 1);
 }
+
+TubePair::~TubePair() {
+    delete lowerRect;
+    delete upperRect;
+}

@@ -14,6 +14,8 @@ public:
     QRect* getUpper();
     int getX();
     void moveLeft();
+
+    ~TubePair();
 };
 
 
