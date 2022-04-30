@@ -19,7 +19,7 @@ set(PROJECT_SOURCES
         flappybird.cpp
         flappybird.h
         flappybird.ui
-        Models/TubePair.cpp Models/TubePair.h Models/Bird.cpp Models/Bird.h Controllers/BirdController.cpp Controllers/BirdController.h)
+        Models/TubePair.cpp Models/TubePair.h Models/Bird.cpp Models/Bird.h Controllers/BirdController.cpp Controllers/BirdController.h Controllers/TubeController.cpp Controllers/TubeController.h)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(FlappyBird

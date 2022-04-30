@@ -15,6 +15,7 @@
 #include <QKeyEvent>
 #include "Models/TubePair.h"
 #include "Controllers/BirdController.h"
+#include "Controllers/TubeController.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class FlappyBird; }
@@ -25,36 +26,29 @@ class FlappyBird : public QMainWindow
     Q_OBJECT
 
 public:
-    FlappyBird(QWidget *parent = nullptr);
+    explicit FlappyBird(QWidget *parent = nullptr);
 
-    void paintEvent(QPaintEvent *e);
+    void paintEvent(QPaintEvent *e) override;
     void keyPressEvent(QKeyEvent *e) override;
 
-    ~FlappyBird();
+    ~FlappyBird() override;
 
 public slots:
     void refreshController();
     void start();
 
 private:
-    int refreshTime = 10, deltaWindow, firstTubeX, windowTube, tubeWidth;
+    int refreshTime = 10;
 
-    quint32 distance;
-
-    QImage* tubeJPG_ = new QImage(QString("/home/skalem/FlappyBird/sprites/tube.png"), "PNG");
-    QImage* upsideTubeJPG_ = new QImage(QString("/home/skalem/FlappyBird/sprites/uTube.png"), "PNG");
     QImage* backPNG_ = new QImage(QString("/home/skalem/FlappyBird/sprites/back.png"), "PNG");
 
-    std::vector<TubePair*> tubes;
     Ui::FlappyBird *ui;
 
-    QRandomGenerator rand;
 
     QTimer* refreshTimer = new QTimer(this);
 
     Bird* bird;
-    BirdController* birdController;
-
-    void generateRect();
+    BirdController* birdController = nullptr;
+    TubeController* tubeController = nullptr;
 };
 #endif // FLAPPYBIRD_H

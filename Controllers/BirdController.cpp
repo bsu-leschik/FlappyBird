@@ -13,3 +13,7 @@ void BirdController::jump() {
     drop = 5;
     bird_->moveUp((int)drop);
 }
+
+BirdController::~BirdController() {
+    delete bird_;
+}
