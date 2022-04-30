@@ -2,23 +2,24 @@
 #include <iostream>
 
 TubeController::TubeController(int width, int height) {
-    deltaWindow_ = height/3;
     firstTubeX_ = width;
     distance = width/3;
     windowTube_ = height/3;
     tubeWidth_ = width/15;
     width_ = width;
     height_ = height;
+    rand = std::mt19937(rd());
     generateTube();
 }
 
 void TubeController::generateTube() {
-    quint32 lower = 100 + windowTube_;
-    quint32 upper = height_ - lower;
+    int lower = 100 + windowTube_;
+    int upper = height_ - lower;
 
-    quint32 result = rand.bounded(lower, upper);
+    std::uniform_int_distribution<int> dist(lower, upper);
 
-    std::cout << result << std::endl;
+    quint32 result = dist(rand);
+
     TubePair* tPair = new TubePair(width_, result, tubeWidth_, height_, windowTube_);
     tubes_.push_back(tPair);
 }
@@ -43,4 +44,9 @@ void TubeController::paint(QPainter *painter) {
         painter->drawImage(*tPair->getLower(), *(this->tubeJPG_));
         painter->drawImage(*tPair->getUpper(), *(this->upsideTubeJPG_));
     }
+}
+
+TubeController::~TubeController() {
+    delete tubeJPG_;
+    delete upsideTubeJPG_;
 }
