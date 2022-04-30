@@ -1,17 +1,21 @@
 #include "Bird.h"
 
-Bird::Bird(int x,int y, const QString& pathToSprite) {
-    bird = new QRect(x, y, 17, 12);
+Bird::Bird(int x,int y) {
+    bird = new QRect(x, y, 170, 120);
     x_ = x;
     y_ = y;
 }
 
 void Bird::moveDown(int height) {
-    y_ -= height;
+    y_ += height;
+    bird->setY(y_);
+    bird->setHeight(bird->height() + height);
 }
 
 void Bird::moveUp(int height) {
-    y_ += height;
+    y_ -= height;
+    bird->setY(y_);
+    bird->setHeight(bird->height() - height);
 }
 
 Bird::~Bird() {
@@ -29,6 +33,16 @@ int Bird::getY() const {
 
 QImage Bird::getSprite() {
     return *img;
+}
+
+void Bird::move(int height) {
+    y_ -= height;
+    bird->setY(y_);
+    bird->setHeight(bird->height() - height);
+}
+
+QRect Bird::getRect() {
+    return *bird;
 }
 
 

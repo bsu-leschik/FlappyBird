@@ -24,8 +24,11 @@ void FlappyBird::start() {
     deltaWindow = this->height()/4;
     firstTubeX = this->width();
     distance = this->width()/3;
-    windowTube = this->height()/5;
+    windowTube = this->height()/4;
     tubeWidth = this->width()/15;
+
+    bird = new Bird(100, this->height()/2);
+    birdController = new BirdController(bird);
 
     generateRect();
     connect(refreshTimer, SIGNAL(timeout()), SLOT(refreshController()));
@@ -44,6 +47,9 @@ void FlappyBird::refreshController() {
     if (tubes.front()->getX() <= 0 - tubeWidth){
         tubes.erase(tubes.cbegin());
     }
+
+    birdController->refresh();
+
     this->update();
 }
 
@@ -54,6 +60,7 @@ void FlappyBird::paintEvent(QPaintEvent *e) {
     for (TubePair* tPair: tubes) {
         painter.drawImage(*tPair->getLower(), *(this->tubeJPG_));
         painter.drawImage(*tPair->getUpper(), *(this->upsideTubeJPG_));
+        painter.drawImage(bird->getRect() ,bird->getSprite());
     }
 }
 
@@ -73,10 +80,20 @@ void FlappyBird::generateRect() {
     tubes.push_back(tPair);
 }
 
+void FlappyBird::keyPressEvent(QKeyEvent *e) {
+    if(Qt::Key_Space == e->key()) {
+        birdController->jump();
+    }
+}
+
 FlappyBird::~FlappyBird(){
     delete ui;
     delete tubeJPG_;
     delete upsideTubeJPG_;
     delete backPNG_;
+    delete bird;
+    delete birdController;
 
 }
+
+

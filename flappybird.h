@@ -12,8 +12,9 @@
 #include <iostream>
 #include <QTimer>
 #include <utility>
-#include "QResizeEvent"
+#include <QKeyEvent>
 #include "Models/TubePair.h"
+#include "Controllers/BirdController.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class FlappyBird; }
@@ -27,6 +28,7 @@ public:
     FlappyBird(QWidget *parent = nullptr);
 
     void paintEvent(QPaintEvent *e);
+    void keyPressEvent(QKeyEvent *e) override;
 
     ~FlappyBird();
 
@@ -49,6 +51,9 @@ private:
     QRandomGenerator rand;
 
     QTimer* refreshTimer = new QTimer(this);
+
+    Bird* bird;
+    BirdController* birdController;
 
     void generateRect();
 };
