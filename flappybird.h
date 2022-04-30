@@ -27,21 +27,17 @@ public:
     FlappyBird(QWidget *parent = nullptr);
 
     void paintEvent(QPaintEvent *e);
-    void resizeEvent(QResizeEvent* event);
 
     ~FlappyBird();
 
 public slots:
     void refreshController();
+    void start();
 
 private:
-    int refreshTime = 10;
-    int deltaWindow = this->height()/4;
-    int firstTubeX = this->width();
-    quint32 distance = this->width()/3;
+    int refreshTime = 10, deltaWindow, firstTubeX, windowTube, tubeWidth;
 
-    int windowTube = this->height()/5;
-    int tubeWidth = this->width()/13;
+    quint32 distance;
 
     QImage* tubeJPG_ = new QImage(QString("/home/skalem/FlappyBird/sprites/tube.png"), "PNG");
     QImage* upsideTubeJPG_ = new QImage(QString("/home/skalem/FlappyBird/sprites/uTube.png"), "PNG");
@@ -51,6 +47,8 @@ private:
     Ui::FlappyBird *ui;
 
     QRandomGenerator rand;
+
+    QTimer* refreshTimer = new QTimer(this);
 
     void generateRect();
 };

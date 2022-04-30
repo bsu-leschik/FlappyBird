@@ -7,14 +7,27 @@ FlappyBird::FlappyBird(QWidget *parent)
     {
     ui->setupUi(this);
 
+    auto* wait = new QTimer(this);
+    wait->setSingleShot(true);
+
+    connect(wait, SIGNAL(timeout()), SLOT(start()));
+    wait->start(500);
+}
+
+void FlappyBird::start() {
     QPixmap background("/home/skalem/FlappyBird/sprites/back.png");
     background = background.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
     palette.setBrush(QPalette::Background, background);
     this->setPalette(palette);
 
+    deltaWindow = this->height()/4;
+    firstTubeX = this->width();
+    distance = this->width()/3;
+    windowTube = this->height()/5;
+    tubeWidth = this->width()/15;
+
     generateRect();
-    QTimer* refreshTimer = new QTimer(this);
     connect(refreshTimer, SIGNAL(timeout()), SLOT(refreshController()));
     refreshTimer->start(refreshTime);
 }
@@ -58,17 +71,6 @@ void FlappyBird::generateRect() {
 
     TubePair* tPair = new TubePair(this->width(), result, tubeWidth, this->height(), windowTube);
     tubes.push_back(tPair);
-}
-
-void FlappyBird::resizeEvent(QResizeEvent *event) {
-    QWidget::resizeEvent(event);
-    deltaWindow = this->height()/4;
-    firstTubeX = this->width();
-    distance = this->width()/3;
-
-    windowTube = this->height()/5;
-    tubeWidth = this->width()/13;
-
 }
 
 FlappyBird::~FlappyBird(){

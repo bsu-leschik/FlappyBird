@@ -7,7 +7,8 @@
 class Bird {
     int x_;
     int y_;
-    QPixmap* bird;
+    QRect* bird;
+    QImage* img = new QImage(":/sprites/bird.png");
     //12*17
 public:
     Bird(int x, int y, const QString& pathToSprite);
@@ -17,6 +18,8 @@ public:
 
     int getX() const;
     int getY() const;
+
+    QImage getSprite();
 
     ~Bird();
 };

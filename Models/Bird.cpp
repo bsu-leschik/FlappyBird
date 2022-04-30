@@ -1,8 +1,7 @@
 #include "Bird.h"
 
 Bird::Bird(int x,int y, const QString& pathToSprite) {
-    bird = new QPixmap(pathToSprite);
-    bird->scaled(17, 12);
+    bird = new QRect(x, y, 17, 12);
     x_ = x;
     y_ = y;
 }
@@ -17,6 +16,7 @@ void Bird::moveUp(int height) {
 
 Bird::~Bird() {
     delete bird;
+    delete img;
 }
 
 int Bird::getX() const {
@@ -25,6 +25,10 @@ int Bird::getX() const {
 
 int Bird::getY() const {
     return y_;
+}
+
+QImage Bird::getSprite() {
+    return *img;
 }
 
 
