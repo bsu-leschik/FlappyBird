@@ -2,16 +2,10 @@
 #define FLAPPYBIRD_H
 
 #include <QMainWindow>
-#include <vector>
-#include <QPoint>
 #include <QImage>
 #include <QString>
 #include <QPainter>
-#include <QRect>
-#include <QRandomGenerator>
-#include <iostream>
 #include <QTimer>
-#include <utility>
 #include <QKeyEvent>
 #include "Models/TubePair.h"
 #include "Controllers/BirdController.h"
@@ -40,7 +34,7 @@ public slots:
 private:
     int refreshTime = 10;
 
-    QImage* backPNG_ = new QImage(QString("/home/skalem/FlappyBird/sprites/back.png"), "PNG");
+    QImage* backPNG_ = new QImage("/home/skalem/FlappyBird/sprites/back.png");
 
     Ui::FlappyBird *ui;
 
