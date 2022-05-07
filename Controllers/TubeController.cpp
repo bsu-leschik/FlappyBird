@@ -48,8 +48,7 @@ void TubeController::paint(QPainter *painter) {
 
 TubePair* TubeController::getTubeByX(int startX, int endX) {
     for (TubePair* pair : tubes_) {
-        if (startX >= pair->getX() || startX <= (pair->getX() + width_) ||
-        endX >= pair->getX() || endX <= (pair->getX() + width_)){
+        if (startX <= (pair->getX() + tubeWidth_) && endX >= pair->getX()){
             return pair;
         }
     }
