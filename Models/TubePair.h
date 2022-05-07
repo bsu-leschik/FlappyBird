@@ -14,6 +14,7 @@ public:
     QRect* getUpper();
     int getX();
     void moveLeft();
+    bool intersects(QRect rect);
 
     ~TubePair();
 };

@@ -22,7 +22,17 @@ void TubePair::moveLeft() {
     upperRect->moveLeft(upperRect->x() - 1);
 }
 
+bool TubePair::intersects(QRect rect) {
+    if (lowerRect->intersects(rect) || upperRect->intersects(rect)){
+        return true;
+    }
+    return false;
+}
+
 TubePair::~TubePair() {
     delete lowerRect;
     delete upperRect;
 }
+
+
+

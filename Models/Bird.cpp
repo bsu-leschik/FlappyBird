@@ -1,7 +1,7 @@
 #include "Bird.h"
 
 Bird::Bird(int x,int y) {
-    bird = new QRect(x, y, 170, 120);
+    bird = new QRect(x, y, width, height);
     x_ = x;
     y_ = y;
 }
@@ -43,6 +43,14 @@ void Bird::move(int height) {
 
 QRect Bird::getRect() {
     return *bird;
+}
+
+int Bird::getHeight() const {
+    return height;
+}
+
+int Bird::getWidth() const{
+    return width;
 }
 
 

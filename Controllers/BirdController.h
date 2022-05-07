@@ -2,19 +2,26 @@
 #define FLAPPYBIRD_BIRDCONTROLLER_H
 
 #include "../Models/Bird.h"
-#include "cmath"
-
 
 class BirdController{
     Bird* bird_;
     double drop = 0;
+    int screenHeight_;
 
 public:
-    explicit BirdController(Bird* bird);
+    explicit BirdController(Bird* bird, int screenHeight);
 
     void refresh();
 
     void jump();
+
+    int getX();
+
+    int getY();
+
+    Bird* getBird();
+
+    QRect getBoundingRect();
 
     ~BirdController();
 

@@ -28,6 +28,10 @@ public:
 
     void refresh();
 
+    TubePair* getTubeByX(int startX, int endX);
+
+
+
     ~TubeController();
 };
 

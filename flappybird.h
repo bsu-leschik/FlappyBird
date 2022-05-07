@@ -10,6 +10,7 @@
 #include "Models/TubePair.h"
 #include "Controllers/BirdController.h"
 #include "Controllers/TubeController.h"
+#include "Controllers/IntersectionController.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class FlappyBird; }
@@ -24,6 +25,9 @@ public:
 
     void paintEvent(QPaintEvent *e) override;
     void keyPressEvent(QKeyEvent *e) override;
+    //void resizeEvent(QResizeEvent *e) override;
+
+    void stop();
 
     ~FlappyBird() override;
 
@@ -44,5 +48,6 @@ private:
     Bird* bird;
     BirdController* birdController = nullptr;
     TubeController* tubeController = nullptr;
+    IntersectionController*  intersectionController;
 };
 #endif // FLAPPYBIRD_H

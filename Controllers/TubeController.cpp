@@ -20,7 +20,7 @@ void TubeController::generateTube() {
 
     quint32 result = dist(rand);
 
-    TubePair* tPair = new TubePair(width_, result, tubeWidth_, height_, windowTube_);
+    auto* tPair = new TubePair(width_, result, tubeWidth_, height_, windowTube_);
     tubes_.push_back(tPair);
 }
 
@@ -44,6 +44,16 @@ void TubeController::paint(QPainter *painter) {
         painter->drawImage(*tPair->getLower(), *(this->tubeJPG_));
         painter->drawImage(*tPair->getUpper(), *(this->upsideTubeJPG_));
     }
+}
+
+TubePair* TubeController::getTubeByX(int startX, int endX) {
+    for (TubePair* pair : tubes_) {
+        if (startX >= pair->getX() || startX <= (pair->getX() + width_) ||
+        endX >= pair->getX() || endX <= (pair->getX() + width_)){
+            return pair;
+        }
+    }
+    return nullptr;
 }
 
 TubeController::~TubeController() {
