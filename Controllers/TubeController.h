@@ -8,8 +8,6 @@
 
 class TubeController {
     int firstTubeX_, windowTube_, tubeWidth_, width_, height_;
-    std::random_device rd;
-    std::mt19937 rand;
 
     QImage* tubeJPG_ = new QImage(QString("/home/skalem/FlappyBird/sprites/tube.png"), "PNG");
     QImage* upsideTubeJPG_ = new QImage(QString("/home/skalem/FlappyBird/sprites/uTube.png"), "PNG");
@@ -20,7 +18,7 @@ class TubeController {
 
 
 public:
-    explicit TubeController(int width, int height);
+    TubeController(int width, int height);
 
     void generateTube();
 

@@ -12,7 +12,6 @@
 #include "Controllers/TubeController.h"
 #include "Controllers/IntersectionController.h"
 #include "Controllers/ScoreController.h"
-#include "Controllers/GroundController.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class FlappyBird; }
@@ -27,7 +26,6 @@ public:
 
     void paintEvent(QPaintEvent *e) override;
     void keyPressEvent(QKeyEvent *e) override;
-    //void resizeEvent(QResizeEvent *e) override;
 
     void stop();
 
@@ -48,7 +46,6 @@ private:
     QTimer* refreshTimer = new QTimer(this);
 
     Bird* bird;
-    GroundController* groundController;
     BirdController* birdController = nullptr;
     TubeController* tubeController = nullptr;
     IntersectionController*  intersectionController;

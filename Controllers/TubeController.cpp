@@ -1,5 +1,4 @@
 #include "TubeController.h"
-#include <iostream>
 
 TubeController::TubeController(int width, int height) {
     firstTubeX_ = width;
@@ -7,14 +6,18 @@ TubeController::TubeController(int width, int height) {
     windowTube_ = height/3;
     tubeWidth_ = width/15;
     width_ = width;
-    height_ = height;
-    rand = std::mt19937(rd());
+    height_ = height + 20;
     generateTube();
 }
 
 void TubeController::generateTube() {
     int lower = 100 + windowTube_;
     int upper = height_ - lower;
+
+    std::random_device rd;
+    std::mt19937 rand;
+
+    rand = std::mt19937(rd());
 
     std::uniform_int_distribution<int> dist(lower, upper);
 
