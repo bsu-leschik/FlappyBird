@@ -6,10 +6,15 @@
 
 class IntersectionController {
 
+    bool inTube = false;
+    bool isOut = false;
+
 public:
     IntersectionController(BirdController* bird, TubeController* tubes);
 
     bool isIntersection();
+
+    bool passed() const;
 
     ~IntersectionController() = default;
 private:

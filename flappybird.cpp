@@ -27,6 +27,7 @@ void FlappyBird::start() {
     birdController = new BirdController(bird, this->height());
     tubeController = new TubeController(this->width(), this->height());
     intersectionController = new IntersectionController(birdController, tubeController);
+    scoreController = new ScoreController(this->width()/2, this->height()/10);
 
     refreshTimer->start(refreshTime);
 }
@@ -34,9 +35,13 @@ void FlappyBird::start() {
 void FlappyBird::refreshController() {
     tubeController->refresh();
     birdController->refresh();
+
     if (intersectionController->isIntersection()){
         this->stop();
         return;
+    }
+    if (intersectionController->passed()){
+        scoreController->add();
     }
     this->update();
 }
@@ -45,6 +50,7 @@ void FlappyBird::paintEvent(QPaintEvent *e) {
     if (tubeController == nullptr) {return;}
     auto* painter = new QPainter(this);
     tubeController->paint(painter);
+    scoreController->paint(painter);
 
     painter->drawImage(bird->getRect() ,bird->getSprite());
     delete painter;
@@ -67,6 +73,7 @@ void FlappyBird::stop() {
     delete birdController;
     birdController = nullptr;
     delete intersectionController;
+    delete scoreController;
 }
 
 FlappyBird::~FlappyBird(){
