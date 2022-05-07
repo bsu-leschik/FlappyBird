@@ -28,6 +28,8 @@ void FlappyBird::start() {
     tubeController = new TubeController(this->width(), this->height());
     intersectionController = new IntersectionController(birdController, tubeController);
     scoreController = new ScoreController(this->width()/2, this->height()/10);
+    groundController = new GroundController(this->height() - this->height()/10);
+
 
     refreshTimer->start(refreshTime);
 }

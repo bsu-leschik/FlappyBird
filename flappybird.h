@@ -12,6 +12,7 @@
 #include "Controllers/TubeController.h"
 #include "Controllers/IntersectionController.h"
 #include "Controllers/ScoreController.h"
+#include "Controllers/GroundController.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class FlappyBird; }
@@ -37,7 +38,7 @@ public slots:
     void start();
 
 private:
-    int refreshTime = 7;
+    int refreshTime = 9;
 
     QImage* backPNG_ = new QImage("/home/skalem/FlappyBird/sprites/back.png");
 
@@ -47,6 +48,7 @@ private:
     QTimer* refreshTimer = new QTimer(this);
 
     Bird* bird;
+    GroundController* groundController;
     BirdController* birdController = nullptr;
     TubeController* tubeController = nullptr;
     IntersectionController*  intersectionController;
