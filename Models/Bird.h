@@ -10,7 +10,7 @@ class Bird {
     int width = 150;
     int height = 100;
     QRect* bird;
-    QImage* img = new QImage("/home/skalem/FlappyBird/sprites/bird.png");
+    QImage* img = new QImage("../sprites/bird.png");
     //12*17
 public:
     Bird(int x, int y);

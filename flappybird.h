@@ -38,7 +38,7 @@ public slots:
 private:
     int refreshTime = 9;
 
-    QImage* backPNG_ = new QImage("/home/skalem/FlappyBird/sprites/back.png");
+    QImage* backPNG_ = new QImage("../sprites/back.png");
 
     Ui::FlappyBird *ui;
 

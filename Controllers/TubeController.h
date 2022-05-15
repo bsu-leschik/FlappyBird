@@ -9,8 +9,8 @@
 class TubeController {
     int firstTubeX_, windowTube_, tubeWidth_, width_, height_;
 
-    QImage* tubeJPG_ = new QImage(QString("/home/skalem/FlappyBird/sprites/tube.png"), "PNG");
-    QImage* upsideTubeJPG_ = new QImage(QString("/home/skalem/FlappyBird/sprites/uTube.png"), "PNG");
+    QImage* tubeJPG_ = new QImage(QString("../sprites/tube.png"), "PNG");
+    QImage* upsideTubeJPG_ = new QImage(QString("../sprites/uTube.png"), "PNG");
     std::vector<TubePair*> tubes_;
 
     quint32 distance;
