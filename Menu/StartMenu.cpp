@@ -17,12 +17,14 @@ StartMenu::StartMenu(QWidget *parent) : QButtonGroup(parent) {
     scoresBtn->setIcon(*scoresImg);
     settingsBtn->setIcon(*settingsImg);
 
+    startBtn->setPalette(QPalette(Qt::TransparentMode));
+    scoresBtn->setPalette(QPalette(Qt::TransparentMode));
+
     startBtn->setIconSize(startBtn->size());
     scoresBtn->setIconSize(scoresBtn->size());
     settingsBtn->setIconSize(settingsBtn->size());
 
-    startBtn->setPalette(QPalette(Qt::transparent));
-    scoresBtn->setPalette(QPalette(Qt::transparent));
+
 
     addButton(startBtn, 1);
     addButton(scoresBtn, 2);
