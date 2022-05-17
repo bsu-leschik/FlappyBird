@@ -7,11 +7,14 @@
 #include <QPainter>
 #include <QTimer>
 #include <QKeyEvent>
+#include <QPushButton>
+#include "Menu/StartMenu.h"
 #include "Models/TubePair.h"
 #include "Controllers/BirdController.h"
 #include "Controllers/TubeController.h"
 #include "Controllers/IntersectionController.h"
 #include "Controllers/ScoreController.h"
+#include "Settings/SettingsWindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class FlappyBird; }
@@ -24,6 +27,9 @@ class FlappyBird : public QMainWindow
 public:
     explicit FlappyBird(QWidget *parent = nullptr);
 
+    void start();
+    void openSettings();
+
     void paintEvent(QPaintEvent *e) override;
     void keyPressEvent(QKeyEvent *e) override;
 
@@ -33,9 +39,11 @@ public:
 
 public slots:
     void refreshController();
-    void start();
+    void startMenuController(int id);
+    void init();
 
 private:
+    bool inGame = false;
     int refreshTime = 9;
 
     QImage* backPNG_ = new QImage("/home/skalem/FlappyBird/sprites/back.png");
@@ -50,5 +58,8 @@ private:
     TubeController* tubeController = nullptr;
     IntersectionController*  intersectionController;
     ScoreController* scoreController;
+
+    StartMenu* menu;
+    SettingsWindow* settings;
 };
 #endif // FLAPPYBIRD_H
