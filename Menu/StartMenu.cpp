@@ -1,5 +1,4 @@
 #include "StartMenu.h"
-#include <iostream>
 
 StartMenu::StartMenu(QWidget *parent) : QButtonGroup(parent) {
     width_ = parent->width();
