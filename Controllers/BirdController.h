@@ -7,6 +7,7 @@ class BirdController{
     int startPosY;
     Bird* bird_;
     double drop = 0;
+    double dropVelocity = 0.1;
     int jumpHeight = 5;
     int screenHeight_;
 
@@ -20,6 +21,8 @@ public:
     void jump();
 
     void setJumpHeight(int height);
+
+    void setDropVelocity(double height);
 
     int getX();
 

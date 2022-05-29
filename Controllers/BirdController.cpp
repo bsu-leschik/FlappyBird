@@ -7,7 +7,7 @@ BirdController::BirdController(Bird *bird, int screenHeight){
 
 void BirdController::refresh() {
     if(bird_->getRect().bottom() <= screenHeight_) {
-        drop -= 0.1;
+        drop -= dropVelocity;
         bird_->move((int)drop);
     }
 }
@@ -43,4 +43,8 @@ void BirdController::restart() {
 
 void BirdController::setJumpHeight(int height) {
     jumpHeight = height;
+}
+
+void BirdController::setDropVelocity(double height) {
+    dropVelocity = height;
 }
