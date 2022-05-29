@@ -7,8 +7,8 @@
 class Bird {
     int x_;
     int y_;
-    int width = 150;
-    int height = 100;
+    int width = 120;
+    int height = 80;
     QRect* bird;
     QImage* img = new QImage("/home/skalem/FlappyBird/sprites/bird.png");
     //12*17

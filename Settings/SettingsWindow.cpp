@@ -84,7 +84,7 @@ void SettingsWindow::openExplorer() {
     if (Linux) {
         path = "/home";
     } else {
-        path = "file:///C:/";
+        path = "";
     }
     QString tempPath;
     tempPath = QFileDialog::getOpenFileName(this, tr("Open File"), path, tr("Images (*.png *.xpm *.jpg)"));

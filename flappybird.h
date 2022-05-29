@@ -45,7 +45,7 @@ public slots:
 
 private:
     bool inGame = false;
-    int refreshTime = 9;
+    int refreshTime = 7;
 
     QImage* backPNG_ = new QImage("/home/skalem/FlappyBird/sprites/back.png");
 
