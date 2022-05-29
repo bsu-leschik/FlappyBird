@@ -7,10 +7,10 @@
 class Bird {
     int x_;
     int y_;
-    int width = 120;
-    int height = 80;
+    int width = 100;
+    int height = 70;
     QRect* bird;
-    QImage* img = new QImage("../sprites/bird.png");
+    QImage* img = new QImage("../sprites/bird0.png");
     //12*17
 public:
     Bird(int x, int y);

@@ -24,7 +24,7 @@ private:
 
     QPushButton* birdSelectionButton;
 
-    QString spritePath = "../sprites/bird.png";
+    QString spritePath = "../sprites/bird0.png";
 
 public:
 

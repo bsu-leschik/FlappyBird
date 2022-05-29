@@ -10,6 +10,8 @@ class BirdController{
     double dropVelocity = 0.1;
     int jumpHeight = 5;
     int screenHeight_;
+    double toChangeBird = 0;
+    QString pathsToBirdSprite[3] = {"../sprites/Birds/bird0.png", "../sprites/Birds/bird1.png", "../sprites/Birds/bird2.png"};
 
 public:
     explicit BirdController(Bird* bird, int screenHeight);
