@@ -24,8 +24,10 @@ void FlappyBird::init() {
     this->setPalette(palette);
 
     bird = new Bird(100, this->height() / 2);
-    birdController = new BirdController(bird, this->height());
+    ground = new Ground(this->width(), this->height()/10, 0, this->height() - this->height()/10);
+    birdController = new BirdController(bird, this->height() - this->height()/10);
     tubeController = new TubeController(this->width(), this->height());
+    groundController = new GroundController(ground);
 
     settings = new SettingsWindow();
     connect(settings, SIGNAL(onCloseSignal()), this, SLOT(settingsController()));
@@ -39,7 +41,7 @@ void FlappyBird::start() {
 
     birdController->restart();
     tubeController->restart();
-    intersectionController = new IntersectionController(birdController, tubeController);
+    intersectionController = new IntersectionController(birdController, tubeController, groundController);
     scoreController = new ScoreController(this->width() / 2, this->height() / 10);
 
     menu->hide();
@@ -52,6 +54,7 @@ void FlappyBird::start() {
 void FlappyBird::refreshController() {
     tubeController->refresh();
     birdController->refresh();
+    groundController->refresh();
 
 
     if (intersectionController->isIntersection()) {
@@ -69,6 +72,7 @@ void FlappyBird::paintEvent(QPaintEvent *e) {
     auto *painter = new QPainter(this);
     tubeController->paint(painter);
     scoreController->paint(painter);
+    groundController->paint(painter);
 
 
     painter->drawImage(bird->getRect(), bird->getSprite());
@@ -90,8 +94,6 @@ void FlappyBird::keyPressEvent(QKeyEvent *e) {
 
 void FlappyBird::stop() {
     refreshTimer->stop();
-//    delete intersectionController;
-//    delete scoreController;
     inGame = false;
     menu->show();
 }

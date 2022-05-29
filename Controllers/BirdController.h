@@ -2,6 +2,7 @@
 #define FLAPPYBIRD_BIRDCONTROLLER_H
 
 #include "../Models/Bird.h"
+#include <QVector>
 
 class BirdController{
     int startPosY;
@@ -10,6 +11,8 @@ class BirdController{
     double dropVelocity = 0.1;
     int jumpHeight = 5;
     int screenHeight_;
+    double toChangeBird = 0;
+    QVector<QString> pathsToBirdSprite = {"../sprites/Birds/bird0.png", "../sprites/Birds/bird1.png", "../sprites/Birds/bird2.png"};
 
 public:
     explicit BirdController(Bird* bird, int screenHeight);
@@ -24,7 +27,7 @@ public:
 
     void setDropVelocity(double height);
 
-    void setSpritePath(const QString& path);
+    void setSpritePath(const QVector<QString>& path);
 
     int getX();
 

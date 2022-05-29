@@ -6,6 +6,11 @@ BirdController::BirdController(Bird *bird, int screenHeight){
 }
 
 void BirdController::refresh() {
+    toChangeBird += 0.1;
+    if ((int) toChangeBird == 3){
+        toChangeBird = 0;
+    }
+    bird_->setPathToSprite(pathsToBirdSprite[(int)toChangeBird]);
     if(bird_->getRect().bottom() <= screenHeight_) {
         drop -= dropVelocity;
         bird_->move((int)drop);
@@ -46,6 +51,6 @@ void BirdController::setDropVelocity(double height) {
     dropVelocity = height;
 }
 
-void BirdController::setSpritePath(const QString& path) {
-    bird_->setPathToSprite(path);
+void BirdController::setSpritePath(const QVector<QString>& path) {
+    pathsToBirdSprite = path;
 }

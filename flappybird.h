@@ -14,6 +14,7 @@
 #include "Controllers/TubeController.h"
 #include "Controllers/IntersectionController.h"
 #include "Controllers/ScoreController.h"
+#include "Controllers/GroundController.h"
 #include "Settings/SettingsWindow.h"
 
 QT_BEGIN_NAMESPACE
@@ -55,8 +56,10 @@ private:
     QTimer* refreshTimer = new QTimer(this);
 
     Bird* bird;
+    Ground* ground;
     BirdController* birdController = nullptr;
     TubeController* tubeController = nullptr;
+    GroundController* groundController = nullptr;
     IntersectionController*  intersectionController;
     ScoreController* scoreController;
 

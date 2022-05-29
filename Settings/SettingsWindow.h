@@ -10,6 +10,8 @@
 #include <QPushButton>
 #include <QFileDialog>
 #include <QString>
+#include <QButtonGroup>
+#include <QVector>
 
 class SettingsWindow : public QWidget{
     Q_OBJECT;
@@ -22,9 +24,13 @@ private:
     QLabel* tubeVelocityLabel;
     QLabel* jumpHeightLabel;
 
-    QPushButton* birdSelectionButton;
 
-    QString spritePath = "../sprites/bird.png";
+    QButtonGroup* spriteButtons;
+    QPushButton* birdSelectionButton0;
+    QPushButton* birdSelectionButton1;
+    QPushButton* birdSelectionButton2;
+
+    QVector<QString> spritePaths = {"../sprites/Birds/bird0.png","../sprites/Birds/bird1.png","../sprites/Birds/bird2.png"};
 
 public:
 
@@ -37,12 +43,12 @@ public:
     int getJumpHeight();
     int getHorizontalVelocity();
     int getVerticalVelocity();
-    QString getPathToBirdSprite();
+    QVector<QString> getPathToBirdSprite();
 
     ~SettingsWindow() override;
 
 public slots:
-    void openExplorer();
+    void openExplorer(int);
 
 signals:
     void onCloseSignal();
