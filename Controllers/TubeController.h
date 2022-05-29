@@ -7,7 +7,7 @@
 #include "../Models/TubePair.h"
 
 class TubeController {
-    int firstTubeX_, windowTube_, tubeWidth_, width_, height_;
+    int firstTubeX_, windowTube_, tubeWidth_, width_, height_, velocity_ = 2;
 
     QImage* tubeJPG_ = new QImage(QString("/home/skalem/FlappyBird/sprites/tube.png"), "PNG");
     QImage* upsideTubeJPG_ = new QImage(QString("/home/skalem/FlappyBird/sprites/uTube.png"), "PNG");
@@ -20,9 +20,13 @@ class TubeController {
 public:
     TubeController(int width, int height);
 
+    void restart();
+
     void generateTube();
 
     void paint(QPainter* painter);
+
+    void setVelocity(int velocity);
 
     void refresh();
 

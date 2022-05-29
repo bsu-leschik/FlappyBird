@@ -1,6 +1,7 @@
 #include "BirdController.h"
-BirdController::BirdController(Bird *bird, int screenHeight) {
+BirdController::BirdController(Bird *bird, int screenHeight){
     bird_ = bird;
+    startPosY = bird->getY();
     screenHeight_ = screenHeight;
 }
 
@@ -34,4 +35,8 @@ Bird *BirdController::getBird() {
 
 BirdController::~BirdController() {
     delete bird_;
+}
+
+void BirdController::restart() {
+    this->bird_->setY(startPosY);
 }

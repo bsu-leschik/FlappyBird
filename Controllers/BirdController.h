@@ -4,12 +4,16 @@
 #include "../Models/Bird.h"
 
 class BirdController{
+    int startPosY;
+    int startPosX;
     Bird* bird_;
     double drop = 0;
     int screenHeight_;
 
 public:
     explicit BirdController(Bird* bird, int screenHeight);
+
+    void restart();
 
     void refresh();
 

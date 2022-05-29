@@ -53,6 +53,11 @@ int Bird::getWidth() const{
     return width;
 }
 
+void Bird::setY(int y) {
+    this->y_ = y;
+    bird->moveTo(bird->x(), y);
+}
+
 
 
 

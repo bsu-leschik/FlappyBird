@@ -22,6 +22,8 @@ public:
 
     int getX() const;
     int getY() const;
+    void setY(int y);
+
     int getWidth() const;
     int getHeight() const;
 

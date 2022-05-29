@@ -6,9 +6,11 @@
 #include <QPaintEvent>
 #include <QLabel>
 #include <QPalette>
+#include <QCloseEvent>
 
 
 class SettingsWindow : public QWidget{
+    Q_OBJECT;
 private:
     QSlider* birdVelocity;
     QSlider* tubeVelocity;
@@ -24,7 +26,15 @@ private:
 public:
     explicit SettingsWindow(QWidget* parent = nullptr);
 
+    void closeEvent(QCloseEvent *event) override;
+
+    int getJumpHeight();
+    int getHorizontalVelocity();
+    int getVerticalVelocity();
+
     ~SettingsWindow() override;
+signals:
+    void onCloseSignal();
 };
 
 

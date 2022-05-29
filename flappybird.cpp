@@ -23,15 +23,22 @@ void FlappyBird::init() {
     palette.setBrush(QPalette::Window, background);
     this->setPalette(palette);
 
+    bird = new Bird(100, this->height() / 2);
+    birdController = new BirdController(bird, this->height());
+    tubeController = new TubeController(this->width(), this->height());
+
+    settings = new SettingsWindow();
+    connect(settings, SIGNAL(onCloseSignal()), this, SLOT(settingsController()));
+
     menu = new StartMenu(this);
     connect(menu, SIGNAL(idClicked(int)), SLOT(startMenuController(int)));
     menu->show();
 }
 
 void FlappyBird::start() {
-    bird = new Bird(100, this->height() / 2);
-    birdController = new BirdController(bird, this->height());
-    tubeController = new TubeController(this->width(), this->height());
+
+    birdController->restart();
+    tubeController->restart();
     intersectionController = new IntersectionController(birdController, tubeController);
     scoreController = new ScoreController(this->width() / 2, this->height() / 10);
 
@@ -83,12 +90,8 @@ void FlappyBird::keyPressEvent(QKeyEvent *e) {
 
 void FlappyBird::stop() {
     refreshTimer->stop();
-    delete tubeController;
-    tubeController = nullptr;
-    delete birdController;
-    birdController = nullptr;
-    delete intersectionController;
-    delete scoreController;
+//    delete intersectionController;
+//    delete scoreController;
     inGame = false;
     menu->show();
 }
@@ -108,7 +111,6 @@ void FlappyBird::startMenuController(int id) {
 }
 
 void FlappyBird::openSettings() {
-    settings = new SettingsWindow();
     settings->show();
 }
 
@@ -116,8 +118,13 @@ FlappyBird::~FlappyBird() {
     delete ui;
     delete backPNG_;
     delete menu;
+    settings->close();
     delete settings;
     stop();
+}
+
+void FlappyBird::settingsController() {
+    tubeController->setVelocity(this->settings->getHorizontalVelocity());
 }
 
 

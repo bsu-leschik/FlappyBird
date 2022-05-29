@@ -23,7 +23,7 @@ void TubeController::generateTube() {
 
     quint32 result = dist(rand);
 
-    auto* tPair = new TubePair(width_, result, tubeWidth_, height_, windowTube_);
+    auto* tPair = new TubePair(width_, result, tubeWidth_, height_, windowTube_, velocity_);
     tubes_.push_back(tPair);
 }
 
@@ -32,7 +32,7 @@ void TubeController::refresh() {
         rectPair->moveLeft();
     }
 
-    if (this->tubes_.back()->getX() + distance == firstTubeX_) {
+    if (this->tubes_.back()->getX() + distance <= firstTubeX_) {
         generateTube();
     }
 
@@ -61,4 +61,16 @@ TubePair* TubeController::getTubeByX(int startX, int endX) {
 TubeController::~TubeController() {
     delete tubeJPG_;
     delete upsideTubeJPG_;
+}
+
+void TubeController::setVelocity(int velocity) {
+    velocity_ = velocity;
+    for (TubePair* pair: tubes_) {
+        pair->setVelocity(velocity);
+    }
+}
+
+void TubeController::restart() {
+    tubes_.erase(tubes_.cbegin(), tubes_.cend());
+    generateTube();
 }

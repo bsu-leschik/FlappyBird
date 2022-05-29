@@ -40,6 +40,7 @@ public:
 public slots:
     void refreshController();
     void startMenuController(int id);
+    void settingsController();
     void init();
 
 private:
@@ -60,6 +61,6 @@ private:
     ScoreController* scoreController;
 
     StartMenu* menu;
-    SettingsWindow* settings;
+    SettingsWindow* settings = nullptr;
 };
 #endif // FLAPPYBIRD_H

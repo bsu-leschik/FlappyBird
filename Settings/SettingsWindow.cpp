@@ -20,7 +20,7 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QWidget(parent) {
     tubeVelocityLabel->setText("Horizontal velocity:");
     tubeVelocity->setMaximum(10);
     tubeVelocity->setMinimum(1);
-    tubeVelocity->setSliderPosition(1);
+    tubeVelocity->setSliderPosition(2);
     tubeVelocity->setTracking(true);
 
     jumpHeight = new QSlider(Qt::Horizontal, this);
@@ -56,9 +56,22 @@ SettingsWindow::~SettingsWindow() {
     delete birdVelocityLabel;
     delete tubeVelocityLabel;
     delete jumpHeightLabel;
-
 }
 
+void SettingsWindow::closeEvent(QCloseEvent *event) {
+    QWidget::closeEvent(event);
+    tubeVelocity->setSliderPosition(tubeVelocity->value());
+    emit onCloseSignal();
+}
 
+int SettingsWindow::getJumpHeight() {
+    return jumpHeight->value();
+}
 
+int SettingsWindow::getHorizontalVelocity() {
+    return tubeVelocity->value();
+}
 
+int SettingsWindow::getVerticalVelocity() {
+    return birdVelocity->value();
+}
