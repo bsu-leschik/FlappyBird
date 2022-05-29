@@ -90,8 +90,6 @@ void FlappyBird::keyPressEvent(QKeyEvent *e) {
 
 void FlappyBird::stop() {
     refreshTimer->stop();
-//    delete intersectionController;
-//    delete scoreController;
     inGame = false;
     menu->show();
 }
