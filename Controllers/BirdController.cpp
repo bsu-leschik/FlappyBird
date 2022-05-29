@@ -13,7 +13,7 @@ void BirdController::refresh() {
 }
 
 void BirdController::jump() {
-    drop = 5;
+    drop = jumpHeight;
     bird_->moveUp((int)drop);
 }
 
@@ -39,4 +39,8 @@ BirdController::~BirdController() {
 
 void BirdController::restart() {
     this->bird_->setY(startPosY);
+}
+
+void BirdController::setJumpHeight(int height) {
+    jumpHeight = height;
 }

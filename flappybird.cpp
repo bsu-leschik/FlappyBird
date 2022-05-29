@@ -125,6 +125,7 @@ FlappyBird::~FlappyBird() {
 
 void FlappyBird::settingsController() {
     tubeController->setVelocity(this->settings->getHorizontalVelocity());
+    birdController->setJumpHeight(this->settings->getJumpHeight());
 }
 
 

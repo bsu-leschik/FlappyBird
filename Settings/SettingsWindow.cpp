@@ -27,9 +27,9 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QWidget(parent) {
     jumpHeight->setGeometry(100, 2 * this->height() / 5, this->width() - 200, this->height() / 5);
     jumpHeightLabel = new QLabel(jumpHeight);
     jumpHeightLabel->setText("Jump height: ");
-    jumpHeight->setMinimum(30);
+    jumpHeight->setMaximum(30);
     jumpHeight->setMinimum(1);
-    jumpHeight->setSliderPosition(1);
+    jumpHeight->setSliderPosition(5);
     jumpHeight->setTracking(true);
 
     dropWidget = new QWidget(this);
