@@ -52,10 +52,6 @@ SettingsWindow::~SettingsWindow() {
     delete birdVelocity;
     delete tubeVelocity;
     delete jumpHeight;
-
-    delete birdVelocityLabel;
-    delete tubeVelocityLabel;
-    delete jumpHeightLabel;
 }
 
 void SettingsWindow::closeEvent(QCloseEvent *event) {

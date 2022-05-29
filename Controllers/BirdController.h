@@ -32,7 +32,7 @@ public:
 
     QRect getBoundingRect();
 
-    ~BirdController();
+    ~BirdController() = default;
 
 };
 

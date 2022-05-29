@@ -33,9 +33,6 @@ Bird *BirdController::getBird() {
     return bird_;
 }
 
-BirdController::~BirdController() {
-    delete bird_;
-}
 
 void BirdController::restart() {
     this->bird_->setY(startPosY);

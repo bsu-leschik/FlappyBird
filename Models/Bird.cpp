@@ -18,11 +18,6 @@ void Bird::moveUp(int height) {
     bird->setHeight(bird->height() - height);
 }
 
-Bird::~Bird() {
-    delete bird;
-    delete img;
-}
-
 int Bird::getX() const {
     return x_;
 }

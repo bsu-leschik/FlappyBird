@@ -31,7 +31,7 @@ public:
 
     QImage getSprite();
 
-    ~Bird();
+    ~Bird() = default;
 };
 
 #endif //FLAPPYBIRD_BIRD_H

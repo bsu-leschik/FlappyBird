@@ -115,12 +115,15 @@ void FlappyBird::openSettings() {
 }
 
 FlappyBird::~FlappyBird() {
+    settings->close();
+    stop();
     delete ui;
     delete backPNG_;
     delete menu;
-    settings->close();
     delete settings;
-    stop();
+    delete bird;
+    delete birdController;
+    delete tubeController;
 }
 
 void FlappyBird::settingsController() {
