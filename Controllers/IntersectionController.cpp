@@ -10,9 +10,14 @@ IntersectionController::IntersectionController(BirdController *bird, TubeControl
 bool IntersectionController::isIntersection() {
 
     TubePair* pair = tubes_->getTubeByX(bird_->getX(), bird_->getX() + bird_->getBird()->getWidth());
+
+    if (ground_->getBoundingRect().intersects(bird_->getBoundingRect())){
+        return true;
+    }
+
     if (pair != nullptr){
         inTube = true;
-        if(pair->intersects(bird_->getBoundingRect()) || ground_->getBoundingRect().y() - 5 <= bird_->getY()){
+        if(pair->intersects(bird_->getBoundingRect())){
             return true;
         }
         return false;
