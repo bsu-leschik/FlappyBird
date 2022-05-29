@@ -7,7 +7,9 @@
 #include <QLabel>
 #include <QPalette>
 #include <QCloseEvent>
-
+#include <QPushButton>
+#include <QFileDialog>
+#include <QString>
 
 class SettingsWindow : public QWidget{
     Q_OBJECT;
@@ -20,10 +22,14 @@ private:
     QLabel* tubeVelocityLabel;
     QLabel* jumpHeightLabel;
 
-    QWidget* dropWidget;
-    QLabel* dropLabel;
+    QPushButton* birdSelectionButton;
+
+    QString spritePath = "../sprites/bird.png";
 
 public:
+
+    static bool Linux;
+
     explicit SettingsWindow(QWidget* parent = nullptr);
 
     void closeEvent(QCloseEvent *event) override;
@@ -31,8 +37,13 @@ public:
     int getJumpHeight();
     int getHorizontalVelocity();
     int getVerticalVelocity();
+    QString getPathToBirdSprite();
 
     ~SettingsWindow() override;
+
+public slots:
+    void openExplorer();
+
 signals:
     void onCloseSignal();
 };

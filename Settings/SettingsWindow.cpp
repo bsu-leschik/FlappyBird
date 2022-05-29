@@ -1,4 +1,15 @@
 #include "SettingsWindow.h"
+#include <iostream>
+
+
+
+#ifdef Q_OS_LINUX
+    bool SettingsWindow::Linux = true;
+#elif defined(Q_OS_WINDOWS)
+    SettingsWindow::Linux = false
+#else
+#error "Not supported OS"
+#endif
 
 SettingsWindow::SettingsWindow(QWidget *parent) : QWidget(parent) {
     birdVelocity = new QSlider(Qt::Horizontal, this);
@@ -32,20 +43,16 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QWidget(parent) {
     jumpHeight->setSliderPosition(5);
     jumpHeight->setTracking(true);
 
-    dropWidget = new QWidget(this);
-    dropWidget->setGeometry(100, 3*this->height() / 5, this->width() - 200, 200);
-    dropWidget->setAutoFillBackground(true);
-    QPalette palette;
-    palette.setColor(QPalette::Window, QColor(150, 150, 150));
-    dropWidget->setPalette(palette);
-    dropWidget->setAcceptDrops(true);
-    dropLabel = new QLabel("Drop the image of your bird in here", dropWidget);
-    dropLabel->setMargin(100);
+
+
+    birdSelectionButton = new QPushButton(this);
+    birdSelectionButton->setGeometry(this->width() / 2 - this->width() / 10, 3* this->height() / 5, this->width()/5, 30);
+    birdSelectionButton->setText("Find bird");
+    connect(birdSelectionButton, SIGNAL(clicked()), this, SLOT(openExplorer()));
 
     birdVelocity->show();
     tubeVelocity->show();
     jumpHeight->show();
-    dropWidget->show();
 }
 
 SettingsWindow::~SettingsWindow() {
@@ -70,4 +77,22 @@ int SettingsWindow::getHorizontalVelocity() {
 
 int SettingsWindow::getVerticalVelocity() {
     return birdVelocity->value();
+}
+
+void SettingsWindow::openExplorer() {
+    QString path;
+    if (Linux) {
+        path = "/home";
+    } else {
+        path = "file:///C:/";
+    }
+    QString tempPath;
+    tempPath = QFileDialog::getOpenFileName(this, tr("Open File"), path, tr("Images (*.png *.xpm *.jpg)"));
+    if (tempPath != nullptr){
+        spritePath = tempPath;
+    }
+}
+
+QString SettingsWindow::getPathToBirdSprite() {
+    return spritePath;
 }

@@ -24,6 +24,8 @@ public:
 
     void setDropVelocity(double height);
 
+    void setSpritePath(const QString& path);
+
     int getX();
 
     int getY();

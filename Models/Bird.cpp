@@ -53,6 +53,10 @@ void Bird::setY(int y) {
     bird->moveTo(bird->x(), y);
 }
 
+void Bird::setPathToSprite(const QString& path) {
+    this->img = new QImage(path);
+}
+
 
 
 

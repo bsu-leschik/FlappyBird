@@ -30,6 +30,7 @@ public:
     QRect getRect();
 
     QImage getSprite();
+    void setPathToSprite(const QString& path);
 
     ~Bird() = default;
 };

@@ -130,6 +130,7 @@ void FlappyBird::settingsController() {
     tubeController->setVelocity(this->settings->getHorizontalVelocity());
     birdController->setJumpHeight(this->settings->getJumpHeight());
     birdController->setDropVelocity((double) this->settings->getVerticalVelocity() / 10);
+    birdController->setSpritePath(this->settings->getPathToBirdSprite());
 }
 
 
