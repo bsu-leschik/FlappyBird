@@ -51,6 +51,6 @@ void BirdController::setDropVelocity(double height) {
     dropVelocity = height;
 }
 
-void BirdController::setSpritePath(const QString& path) {
-    bird_->setPathToSprite(path);
+void BirdController::setSpritePath(const QVector<QString>& path) {
+    pathsToBirdSprite = path;
 }
