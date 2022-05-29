@@ -15,9 +15,7 @@ void TubeController::generateTube() {
     int upper = height_ - lower;
 
     std::random_device rd;
-    std::mt19937 rand;
-
-    rand = std::mt19937(rd());
+    std::mt19937 rand(rd());
 
     std::uniform_int_distribution<int> dist(lower, upper);
 
