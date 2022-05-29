@@ -1,9 +1,10 @@
 #include "IntersectionController.h"
 #include <iostream>
 
-IntersectionController::IntersectionController(BirdController *bird, TubeController* tubes) {
+IntersectionController::IntersectionController(BirdController *bird, TubeController* tubes, GroundController* ground) {
     bird_ = bird;
     tubes_ = tubes;
+    ground_ = ground;
 }
 
 bool IntersectionController::isIntersection() {
@@ -11,7 +12,7 @@ bool IntersectionController::isIntersection() {
     TubePair* pair = tubes_->getTubeByX(bird_->getX(), bird_->getX() + bird_->getBird()->getWidth());
     if (pair != nullptr){
         inTube = true;
-        if(pair->intersects(bird_->getBoundingRect())){
+        if(pair->intersects(bird_->getBoundingRect()) || ground_->getBoundingRect().y() - 5 <= bird_->getY()){
             return true;
         }
         return false;

@@ -3,6 +3,7 @@
 
 #include "BirdController.h"
 #include "TubeController.h"
+#include "GroundController.h"
 
 class IntersectionController {
 
@@ -10,7 +11,7 @@ class IntersectionController {
     bool isOut = false;
 
 public:
-    IntersectionController(BirdController* bird, TubeController* tubes);
+    IntersectionController(BirdController* bird, TubeController* tubes, GroundController* ground);
 
     bool isIntersection();
 
@@ -20,6 +21,7 @@ public:
 private:
     BirdController* bird_;
     TubeController* tubes_;
+    GroundController* ground_;
 };
 
 
