@@ -1,6 +1,11 @@
 #include "TubeController.h"
 
 TubeController::TubeController(int width, int height) {
+    QTransform mirrorTransform;
+    mirrorTransform.rotate(180);
+
+    upsideTubeJPG_ = new QImage(tubeJPG_->transformed(mirrorTransform));
+
     firstTubeX_ = width;
     distance = width/3;
     windowTube_ = height/3;
@@ -71,4 +76,12 @@ void TubeController::setVelocity(int velocity) {
 void TubeController::restart() {
     tubes_.erase(tubes_.cbegin(), tubes_.cend());
     generateTube();
+}
+
+void TubeController::setTubeSprite(const QString& path) {
+    tubeJPG_ = new QImage(path);
+    QTransform mirrorTransform;
+    mirrorTransform.rotate(180);
+
+    upsideTubeJPG_ = new QImage(tubeJPG_->transformed(mirrorTransform));
 }

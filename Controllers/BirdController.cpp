@@ -41,6 +41,7 @@ Bird *BirdController::getBird() {
 
 void BirdController::restart() {
     this->bird_->setY(startPosY);
+    this->drop = 0;
 }
 
 void BirdController::setJumpHeight(int height) {

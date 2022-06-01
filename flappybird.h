@@ -48,7 +48,7 @@ private:
     bool inGame = false;
     int refreshTime = 7;
 
-    QImage* backPNG_ = new QImage("../sprites/back.png");
+    QString backPNG_ = "../sprites/back.png";
 
     Ui::FlappyBird *ui;
 
