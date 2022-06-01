@@ -2,18 +2,18 @@
 #define FLAPPYBIRD_GROUND_H
 
 #include <QRect>
-#include <QImage>
+#include <QPixmap>
 
 class Ground {
 
     QRect* boundingRect;
-    QImage* sprite = new QImage("../sprites/bottom.png");
+    QPixmap* sprite = new QPixmap("../sprites/bottom.png");
 
 public:
     Ground(int width, int height, int x = 0, int y = 107);
 
     QRect getBoundingRectangle();
-    QImage getSprite();
+    QPixmap getSprite();
 
     void moveLeft();
 

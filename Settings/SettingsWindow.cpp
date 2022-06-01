@@ -46,11 +46,11 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QWidget(parent) {
     spriteButtons = new QButtonGroup(this);
 
     birdSelectionButton0 = new QPushButton(this);
-    birdSelectionButton0->setText("Find bird(wings down)");
+    birdSelectionButton0->setText("Bird #1");
     birdSelectionButton1 = new QPushButton(this);
-    birdSelectionButton1->setText("Find bird(wings in middle)");
+    birdSelectionButton1->setText("Bird #2");
     birdSelectionButton2 = new QPushButton(this);
-    birdSelectionButton2->setText("Find bird(wings up)");
+    birdSelectionButton2->setText("Bird #3");
 
 
 
@@ -62,10 +62,23 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QWidget(parent) {
     spriteButtons->setId(birdSelectionButton2, 2);
 
     birdSelectionButton0->setGeometry(100, 3* this->height() / 5, this->width()/5, 30);
-    birdSelectionButton1->setGeometry(150 + this->width() / 5, 3* this->height() / 5, this->width()/5, 30);
-    birdSelectionButton2->setGeometry(200 + 2*this->width() / 5, 3* this->height() / 5, this->width()/5, 30);
+    birdSelectionButton1->setGeometry(125 + this->width() / 5, 3* this->height() / 5, this->width()/5, 30);
+    birdSelectionButton2->setGeometry(150 + 2*this->width() / 5, 3* this->height() / 5, this->width()/5, 30);
+
+    chooseTubeSprite = new QPushButton(this);
+    chooseTubeSprite->setGeometry(100, 4 * this->height() / 5, (this->width()-200) / 2 - 50, 30);
+    chooseTubeSprite->setText("Change tubes");
+
+
+    changeBackground = new QPushButton(this);
+    changeBackground->setGeometry(200 + (this->width()-200) / 2 - 50, 4 * this->height() / 5, (this->width()-200) / 2 - 50, 30);
+    changeBackground->setText("Change background");
 
     connect(spriteButtons, SIGNAL(idClicked(int)), this, SLOT(openExplorer(int)));
+
+    connect(chooseTubeSprite, SIGNAL(clicked(bool)), this, SLOT(findTubeSprite()));
+    connect(changeBackground, SIGNAL(clicked(bool)), this, SLOT(findBackground()));
+
 
     birdVelocity->show();
     tubeVelocity->show();
@@ -104,7 +117,7 @@ void SettingsWindow::openExplorer(int id) {
         path = "";
     }
     QString tempPath;
-    tempPath = QFileDialog::getOpenFileName(this, tr("Open File"), path, tr("Images (*.png *.xpm *.jpg)"));
+    tempPath = QFileDialog::getOpenFileName(this, tr("Find bird"), path, tr("Images (*.png *.xpm *.jpg)"));
     if (tempPath != nullptr){
         spritePaths[id] = tempPath;
     }
@@ -112,4 +125,28 @@ void SettingsWindow::openExplorer(int id) {
 
 QVector<QString> SettingsWindow::getPathToBirdSprite() {
     return spritePaths;
+}
+
+void SettingsWindow::findTubeSprite() {
+    QString tempPath;
+    tempPath = QFileDialog::getOpenFileName(this, tr("Find tube"), "", tr("Images (*.png *.xpm *.jpg)"));
+    if (tempPath != nullptr){
+        tubeSpritePath = tempPath;
+    }
+}
+
+void SettingsWindow::findBackground() {
+    QString tempPath;
+    tempPath = QFileDialog::getOpenFileName(this, tr("Find background"), "", tr("Images (*.png *.xpm *.jpg)"));
+    if (tempPath != nullptr){
+        backgroundPath = tempPath;
+    }
+}
+
+QString SettingsWindow::getBackground() {
+    return backgroundPath;
+}
+
+QString SettingsWindow::getTube() {
+    return tubeSpritePath;
 }

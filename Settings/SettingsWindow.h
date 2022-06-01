@@ -29,9 +29,12 @@ private:
     QPushButton* birdSelectionButton0;
     QPushButton* birdSelectionButton1;
     QPushButton* birdSelectionButton2;
+    QPushButton* chooseTubeSprite;
+    QPushButton* changeBackground;
 
     QVector<QString> spritePaths = {"../sprites/Birds/bird0.png","../sprites/Birds/bird1.png","../sprites/Birds/bird2.png"};
-
+    QString backgroundPath = "../sprites/back.png";
+    QString tubeSpritePath = "../sprites/tube.png";
 public:
 
     static bool Linux;
@@ -44,11 +47,15 @@ public:
     int getHorizontalVelocity();
     int getVerticalVelocity();
     QVector<QString> getPathToBirdSprite();
+    QString getBackground();
+    QString getTube();
 
     ~SettingsWindow() override;
 
 public slots:
     void openExplorer(int);
+    void findTubeSprite();
+    void findBackground();
 
 signals:
     void onCloseSignal();

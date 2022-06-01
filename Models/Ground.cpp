@@ -1,6 +1,7 @@
 #include "Ground.h"
 
 Ground::Ground(int width, int height, int x, int y) {
+    sprite->scaled(width, height, Qt::KeepAspectRatio);
     boundingRect = new QRect(x, y, width, height);
     // 398:107 2px per square single part - 25:107
 }
@@ -13,7 +14,7 @@ QRect Ground::getBoundingRectangle() {
     return *boundingRect;
 }
 
-QImage Ground::getSprite() {
+QPixmap Ground::getSprite() {
     return *sprite;
 }
 

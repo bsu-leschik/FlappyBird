@@ -17,8 +17,8 @@ FlappyBird::FlappyBird(QWidget *parent)
 }
 
 void FlappyBird::init() {
-    QPixmap background("/home/skalem/FlappyBird/sprites/back.png");
-    background = background.scaled(this->size(), Qt::IgnoreAspectRatio);
+    QPixmap background(backPNG_);
+    background = background.scaled(this->size(), Qt::KeepAspectRatio);
     QPalette palette;
     palette.setBrush(QPalette::Window, background);
     this->setPalette(palette);
@@ -39,6 +39,11 @@ void FlappyBird::init() {
 
 void FlappyBird::start() {
 
+    QPixmap background(backPNG_);
+    background = background.scaled(this->size(), Qt::KeepAspectRatio);
+    QPalette palette;
+    palette.setBrush(QPalette::Window, background);
+    this->setPalette(palette);
     birdController->restart();
     tubeController->restart();
     intersectionController = new IntersectionController(birdController, tubeController, groundController);
@@ -120,7 +125,6 @@ FlappyBird::~FlappyBird() {
     settings->close();
     stop();
     delete ui;
-    delete backPNG_;
     delete menu;
     delete settings;
     delete bird;
@@ -129,6 +133,8 @@ FlappyBird::~FlappyBird() {
 }
 
 void FlappyBird::settingsController() {
+    this->backPNG_ = settings->getBackground();
+    tubeController->setTubeSprite(this->settings->getTube());
     tubeController->setVelocity(this->settings->getHorizontalVelocity());
     birdController->setJumpHeight(this->settings->getJumpHeight());
     birdController->setDropVelocity((double) this->settings->getVerticalVelocity() / 10);
