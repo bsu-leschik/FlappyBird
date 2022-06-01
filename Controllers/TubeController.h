@@ -10,7 +10,7 @@
 class TubeController {
     int firstTubeX_, windowTube_, tubeWidth_, width_, height_, velocity_ = 2;
 
-    QImage* tubeJPG_ = new QImage(QString("../sprites/tube.png"), "PNG");
+    QImage* tubeJPG_ = new QImage(QString(":/sprites/tube.png"), "PNG");
     QImage* upsideTubeJPG_;
     std::vector<TubePair*> tubes_;
 

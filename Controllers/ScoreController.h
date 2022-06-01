@@ -9,7 +9,7 @@
 
 class ScoreController {
 
-    QString folder = "../sprites/numbers/";
+    QString folder = ":/sprites/numbers/";
     int score = 0;
     int x_;
     int y_;

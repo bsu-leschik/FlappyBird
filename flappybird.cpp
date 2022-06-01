@@ -28,6 +28,7 @@ void FlappyBird::init() {
     birdController = new BirdController(bird, this->height() - this->height()/10);
     tubeController = new TubeController(this->width(), this->height());
     groundController = new GroundController(ground);
+    scoreController = new ScoreController(this->width() / 2, this->height() / 10);
 
     settings = new SettingsWindow();
     connect(settings, SIGNAL(onCloseSignal()), this, SLOT(settingsController()));

@@ -13,9 +13,9 @@ class StartMenu : public QButtonGroup{
     QPushButton *startBtn;
     QPushButton *scoresBtn;
 
-    QIcon *settingsImg = new QIcon("../sprites/Menu/Settings.png");
-    QIcon *startImg = new QIcon("../sprites/Menu/StartButton.png");
-    QIcon *scoresImg = new QIcon("../sprites/Menu/Scores.png");
+    QIcon *settingsImg = new QIcon(":/sprites/Menu/Settings.png");
+    QIcon *startImg = new QIcon(":/sprites/Menu/StartButton.png");
+    QIcon *scoresImg = new QIcon(":/sprites/Menu/Scores.png");
 
 public:
     explicit StartMenu(QWidget *parent);

@@ -7,7 +7,7 @@
 class Ground {
 
     QRect* boundingRect;
-    QPixmap* sprite = new QPixmap("../sprites/bottom.png");
+    QPixmap* sprite = new QPixmap(":/sprites/bottom.png");
 
 public:
     Ground(int width, int height, int x = 0, int y = 107);

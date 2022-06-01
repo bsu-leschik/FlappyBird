@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/">
+        <file>sprites/back.png</file>
+        <file>sprites/bottom.png</file>
+        <file>sprites/tube.png</file>
+        <file>sprites/Birds/bird0.png</file>
+        <file>sprites/Birds/bird1.png</file>
+        <file>sprites/Birds/bird2.png</file>
+        <file>sprites/Menu/Settings.png</file>
+        <file>sprites/Menu/Scores.png</file>
+        <file>sprites/Menu/StartButton.png</file>
+        <file>sprites/numbers/0.png</file>
+        <file>sprites/numbers/1.png</file>
+        <file>sprites/numbers/2.png</file>
+        <file>sprites/numbers/3.png</file>
+        <file>sprites/numbers/4.png</file>
+        <file>sprites/numbers/5.png</file>
+        <file>sprites/numbers/6.png</file>
+        <file>sprites/numbers/7.png</file>
+        <file>sprites/numbers/8.png</file>
+        <file>sprites/numbers/9.png</file>
+    </qresource>
+</RCC>

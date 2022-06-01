@@ -12,7 +12,7 @@ class BirdController{
     int jumpHeight = 5;
     int screenHeight_;
     double toChangeBird = 0;
-    QVector<QString> pathsToBirdSprite = {"../sprites/Birds/bird0.png", "../sprites/Birds/bird1.png", "../sprites/Birds/bird2.png"};
+    QVector<QString> pathsToBirdSprite = {":/sprites/Birds/bird0.png", ":/sprites/Birds/bird1.png", ":/sprites/Birds/bird2.png"};
 
 public:
     explicit BirdController(Bird* bird, int screenHeight);
