@@ -15,8 +15,8 @@ void GroundController::refresh() {
 }
 
 void GroundController::paint(QPainter *painter) {
-    painter->drawImage(ground0_->getBoundingRectangle(), ground0_->getSprite());
-    painter->drawImage(ground1_->getBoundingRectangle(), ground1_->getSprite());
+    painter->drawPixmap(ground0_->getBoundingRectangle(), ground0_->getSprite());
+    painter->drawPixmap(ground1_->getBoundingRectangle(), ground1_->getSprite());
 }
 
 QRect GroundController::getBoundingRect() {
