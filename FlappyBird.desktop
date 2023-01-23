@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=FlappyBird
+Exec="/home/skalem/FlappyBird/cmake-build-debug/FlappyBird"
+Icon=/home/skalem/FlappyBird/sprites/Birds/bird0.png
+Type=Application
+StartupNotify=true
+Comment=Start Flappy Bird
+Comment[ru_RU]=Запустить Flappy Bird
