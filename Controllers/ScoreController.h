@@ -7,6 +7,7 @@
 #include <QString>
 #include <vector>
 
+
 class ScoreController {
 
     QString folder = ":/sprites/numbers/";
@@ -14,12 +15,17 @@ class ScoreController {
     int x_;
     int y_;
 
+
 public:
     ScoreController(int x, int y);
 
     void add();
 
     void paint(QPainter* painter);
+
+    int getScore() const;
+
+    void stop();
 
     ~ScoreController() = default;
 };

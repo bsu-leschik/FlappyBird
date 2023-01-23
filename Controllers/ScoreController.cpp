@@ -35,3 +35,9 @@ void ScoreController::paint(QPainter *painter) {
 void ScoreController::add() {
     score++;
 }
+
+
+int ScoreController::getScore() const {
+    return score;
+}
+

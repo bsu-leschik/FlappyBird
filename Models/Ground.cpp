@@ -7,7 +7,7 @@ Ground::Ground(int width, int height, int x, int y) {
 }
 
 void Ground::moveLeft() {
-    boundingRect->moveLeft(boundingRect->x() - 1);
+    boundingRect->moveLeft(boundingRect->x() - speed);
 }
 
 QRect Ground::getBoundingRectangle() {
@@ -16,5 +16,9 @@ QRect Ground::getBoundingRectangle() {
 
 QPixmap Ground::getSprite() {
     return *sprite;
+}
+
+void Ground::setSpeed(int i) {
+    speed = i;
 }
 

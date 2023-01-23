@@ -8,6 +8,7 @@
 #include <QTimer>
 #include <QKeyEvent>
 #include <QPushButton>
+#include <QListWidget>
 #include "Menu/StartMenu.h"
 #include "Models/TubePair.h"
 #include "Controllers/BirdController.h"
@@ -49,6 +50,8 @@ private:
     int refreshTime = 7;
 
     QString backPNG_ = ":/sprites/back.png";
+
+    QListWidget* scores = new QListWidget();
 
     Ui::FlappyBird *ui;
 

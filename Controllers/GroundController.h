@@ -14,6 +14,8 @@ public:
 
     QRect getBoundingRect();
 
+    void setSpeed(int speed);
+
     void paint(QPainter* painter);
 };
 

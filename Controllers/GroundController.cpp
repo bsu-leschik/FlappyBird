@@ -22,3 +22,8 @@ void GroundController::paint(QPainter *painter) {
 QRect GroundController::getBoundingRect() {
     return {0, ground0_->getBoundingRectangle().y(), ground0_->getBoundingRectangle().width(),ground0_->getBoundingRectangle().height() };
 }
+
+void GroundController::setSpeed(int speed) {
+    ground0_->setSpeed(speed);
+    ground1_->setSpeed(speed);
+}

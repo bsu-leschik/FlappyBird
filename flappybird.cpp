@@ -30,6 +30,8 @@ void FlappyBird::init() {
     groundController = new GroundController(ground);
     scoreController = new ScoreController(this->width() / 2, this->height() / 10);
 
+    scores->setWindowTitle("High scores");
+
     settings = new SettingsWindow();
     connect(settings, SIGNAL(onCloseSignal()), this, SLOT(settingsController()));
 
@@ -101,6 +103,7 @@ void FlappyBird::keyPressEvent(QKeyEvent *e) {
 void FlappyBird::stop() {
     refreshTimer->stop();
     inGame = false;
+    scores->addItem(QString::fromStdString(std::to_string(scoreController->getScore())));
     menu->show();
 }
 
@@ -111,7 +114,12 @@ void FlappyBird::startMenuController(int id) {
         return;
     }
 
-    if (id == 2) { return; }
+    if (id == 2) {
+        if (scores != nullptr) {
+            scores->show();
+        }
+        return;
+    }
 
     if (id == 3) {
         this->openSettings();
@@ -126,6 +134,7 @@ FlappyBird::~FlappyBird() {
     settings->close();
     stop();
     delete ui;
+    delete scores;
     delete menu;
     delete settings;
     delete bird;
@@ -140,6 +149,7 @@ void FlappyBird::settingsController() {
     birdController->setJumpHeight(this->settings->getJumpHeight());
     birdController->setDropVelocity((double) this->settings->getVerticalVelocity() / 10);
     birdController->setSpritePath(this->settings->getPathToBirdSprite());
+    groundController->setSpeed(this->settings->getHorizontalVelocity());
 }
 
 
